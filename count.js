@@ -104,9 +104,30 @@ The function should take a Roman numeral string (e.g., "IX" or "XXI")
 as input and return the corresponding integer value.
 */
 
+const romaToInteger = (roman) => {
+    const romanNumerals = {
+        I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000
+    };
 
+    let total = 0;
+    let preNum = 0;
+    roman.split('').forEach((char) => {
+        const num = romanNumerals[char]
+        if (num >= preNum) {
+            total += num;
 
+        }
+        else {
+            total -= num;
+        }
+        preNum = num
 
+    })
+    return total
+
+}
+
+// console.log(romaToInteger('XXX'))
 /*
 Task 8: Implement a JavaScript function to find the second smallest element in an array of numbers. 
 The function should return the second smallest number.
@@ -118,4 +139,4 @@ const smallestSecond = (arr) => {
     return uniqArr.sort()[1]
 }
 
-console.log(smallestSecond([2, 1, 5, 6, 3, 3, 1, 6, 4, 5, 3]))
+
